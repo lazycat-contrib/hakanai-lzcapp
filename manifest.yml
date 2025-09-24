@@ -1,0 +1,49 @@
+name: Hakanai
+package: community.lazycat.app.hakanai
+version: 2.18.1
+min_os_version: 1.3.8
+description: 一个极简的一次性秘密共享服务
+homepage: https://github.com/czerwonk/hakanai/
+author: hakanai
+application:
+  subdomain: hakanai
+  background_task: true
+  public_path:
+    - /
+
+  upstreams:
+    - location: /
+      backend: http://hakanai:8080/
+
+services:
+  hakanai:
+    container_name: hakanai
+    #  ghcr.io/czerwonk/hakanai:v2.18.1
+    image: registry.lazycat.cloud/czyt/czerwonk/hakanai:cbee49e33f284dad
+    environment:
+      - HAKANAI_LISTEN_ADDRESS=0.0.0.0
+      - HAKANAI_REDIS_DSN=redis://valkey:6379
+    depends_on:
+      - valkey
+    binds:
+      - /lzcapp/var/data:/data
+
+  valkey:
+    # valkey/valkey:alpine
+    image: registry.lazycat.cloud/czyt/valkey/valkey:7207505b622b465d
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - sh -c echo PING | nc -w 5 localhost 6379 | grep PONG
+      interval: 30s
+
+locales:
+  zh:
+    name: "Hakanai"
+    description: "一个极简的一次性秘密共享服务"
+  zh_CN:
+    name: "Hakanai"
+    description: "一个极简的一次性秘密共享服务"
+  en:
+    name: "Hakanai"
+    description: "A minimalist one-time secret sharing service"
