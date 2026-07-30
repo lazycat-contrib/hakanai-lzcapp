@@ -3,15 +3,14 @@ application:
   background_task: true
   public_path:
     - /
-
   upstreams:
     - location: /
       backend: http://hakanai:8080/
-
 services:
   hakanai:
     #  ghcr.io/czerwonk/hakanai:v2.18.1
-    image: registry.lazycat.cloud/czyt/czerwonk/hakanai:cbee49e33f284dad
+    # upstream: ghcr.io/czerwonk/hakanai:v3.0.8
+    image: registry.lazycat.cloud/czyt/czerwonk/hakanai:8b8cdbc6e1f43c04
     environment:
       - HAKANAI_LISTEN_ADDRESS=0.0.0.0
       - HAKANAI_REDIS_DSN=redis://valkey:6379
@@ -19,7 +18,6 @@ services:
       - valkey
     binds:
       - /lzcapp/var/data:/data
-
   valkey:
     # valkey/valkey:alpine
     image: registry.lazycat.cloud/czyt/valkey/valkey:7207505b622b465d
