@@ -1,0 +1,18 @@
+package: community.lazycat.app.hakanai
+version: 2.18.1
+name: Hakanai
+description: 一个极简的一次性秘密共享服务
+min_os_version: 1.5.0
+homepage: https://github.com/czerwonk/hakanai/
+author: hakanai
+
+locales:
+  zh:
+    name: "Hakanai"
+    description: "一个极简的一次性秘密共享服务"
+  zh_CN:
+    name: "Hakanai"
+    description: "一个极简的一次性秘密共享服务"
+  en:
+    name: "Hakanai"
+    description: "A minimalist one-time secret sharing service"
