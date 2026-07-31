@@ -21,8 +21,4 @@ services:
   valkey:
     # valkey/valkey:alpine
     image: registry.lazycat.cloud/czyt/valkey/valkey:369af013ad4a641d
-    healthcheck:
-      test:
-        - CMD-SHELL
-        - sh -c echo PING | nc -w 5 localhost 6379 | grep PONG
-      interval: 30s
+
