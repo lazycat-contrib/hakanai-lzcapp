@@ -20,7 +20,7 @@ services:
       - /lzcapp/var/data:/data
   valkey:
     # valkey/valkey:alpine
-    image: registry.lazycat.cloud/czyt/valkey/valkey:7207505b622b465d
+    image: registry.lazycat.cloud/czyt/valkey/valkey:369af013ad4a641d
     healthcheck:
       test:
         - CMD-SHELL
